@@ -52,7 +52,6 @@ func (s *Server) ListUsers(requestor *c.Client) {
 		fmt.Println("err connecting to client : ", requestor.Username)
 	}
 	for username := range s.Clients {
-		// fmt.Fprintf(requestor.Conn, "- %s\n", username)
 		_, err := requestor.Conn.Write([]byte(fmt.Sprintf("- %s\n", username)))
 		if err != nil {
 			fmt.Println("err listing all users to client : ", requestor.Username)
